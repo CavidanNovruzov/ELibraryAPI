@@ -10,8 +10,6 @@ public sealed class BannerConfiguration : BaseEntityConfiguration<Banner>
     {
         base.Configure(builder);
 
-        builder.ToTable("Banners", "Catalog");
-
         builder.Property(x => x.ImageUrl)
             .IsRequired()
             .HasMaxLength(1000);

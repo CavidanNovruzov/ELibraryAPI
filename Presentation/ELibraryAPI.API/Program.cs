@@ -1,15 +1,20 @@
-using ELibraryAPI.Persistance;
 using ELibraryAPI.Application;
 using ELibraryAPI.Infrastructure;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using ELibraryAPI.Persistance;
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
+using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers(options=>options.Filters.Add<>())
-    .AddFluentValidion(Configuration=>Configuration.RegistrValidatorsFromAssemblyContaining<>())
-    .ConfigureApiBehaviorOptions(options=>options.SuppressModelStateInvalidFilter = true);
-builder.Services.AddHttpContextAccessor();
+//builder.Services.AddControllers(options=>options.Filters.Add<>())
+//    .AddFluentValidion(Configuration=>Configuration.RegistrValidatorsFromAssemblyContaining<>())
+//    .ConfigureApiBehaviorOptions(options=>options.SuppressModelStateInvalidFilter = true);
+//builder.Services.AddHttpContextAccessor();
+
+// Validator-ların hansı layihədə (Assembly) olduğunu göstəririk
+builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
 // Program.cs
 builder.Services.AddApplicationServices();
@@ -31,7 +36,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true, //yaradılacaq token dəyərinin imzalanmasında istifadə olunan gizli anahtarın doğruluğunu yoxlar
             ValidAudience = builder.Configuration["Jwt:Audience"],
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"])),
+            LifetimeValidator = (notBefore, expires, securityToken, validationParameters) =>
+            {
+                if (expires != null)
+                {
+                    return expires > DateTime.UtcNow;
+                }
+                return false;
+            }
         };
     });
 
@@ -50,6 +63,7 @@ app.UseRouting();
 
 app.UseCors();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

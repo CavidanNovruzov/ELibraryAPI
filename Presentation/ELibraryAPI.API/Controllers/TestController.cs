@@ -1,6 +1,5 @@
 ﻿using ELibraryAPI.Application.Abstractions.Repositories.Entities;
 using ELibraryAPI.Domain.Entities.Concrete;
-using ELibraryAPI.Persistance.Repositories.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +20,7 @@ namespace ELibraryAPI.API.Controllers
         [HttpGet("id")]
         public async Task<IActionResult> Get(string id)
         {
-            var result=await _authorReadRepository.GetByIdAsync(id,false);
+            var result=await _authorReadRepository.GetByIdAsync(Guid.Parse(id),false);
             return Ok(result);  
         }
         [HttpPost]

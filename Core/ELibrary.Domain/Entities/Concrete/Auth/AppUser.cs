@@ -16,6 +16,7 @@ public class AppUser : IdentityUser<Guid>,IEntity
     public Basket? Basket { get; set; }
     public Wishlist? Wishlist { get; set; }
 
+
     public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
     public ICollection<Order> Orders { get; set; } = new List<Order>();
     public ICollection<Review> Reviews { get; set; } = new List<Review>();

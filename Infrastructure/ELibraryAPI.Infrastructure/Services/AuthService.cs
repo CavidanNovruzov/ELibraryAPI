@@ -1,6 +1,5 @@
 ﻿using ELibraryAPI.Application.Abstractions.Services.Auth;
 using ELibraryAPI.Application.Dtos.Auth;
-using ELibraryAPI.Application.Features.Commands.AppUser.LoginUser;
 using ELibraryAPI.Application.Options;
 using ELibraryAPI.Application.Responses;
 using ELibraryAPI.Domain.Entities.Concrete.Auth;
@@ -31,7 +30,7 @@ public class AuthService : IAuthService
         IEmailSender emailSender,
         IOptions<SmtpOptions> emailOptions
     )
-    {         _userManager = userManager;
+    {   _userManager = userManager;
         _signInManager = signInManager;
         _jwtGenerator = jwtGenerator;
         _refreshTokenService = refreshTokenService;

@@ -10,27 +10,27 @@ public sealed class AuthorConfiguration : BaseEntityConfiguration<Author>
     {
         base.Configure(builder);
 
-        builder.ToTable("Authors", "Catalog");
-
         builder.Property(x => x.FullName)
             .IsRequired()
-            .HasMaxLength(200);
+            .HasMaxLength(150);
 
         builder.Property(x => x.Biography)
-            .HasColumnType("nvarchar(max)");
+            .HasMaxLength(2500); 
 
         builder.Property(x => x.ImagePath)
-            .HasMaxLength(1000);
+            .IsRequired(false) 
+            .HasMaxLength(500);
 
         builder.Property(x => x.Country)
             .HasMaxLength(100);
 
-        builder.HasIndex(x => x.FullName)
-            .IsUnique();
+     
+        builder.HasIndex(x => x.FullName);
 
+        
         builder.HasMany(x => x.ProductAuthors)
             .WithOne(x => x.Author)
             .HasForeignKey(x => x.AuthorId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

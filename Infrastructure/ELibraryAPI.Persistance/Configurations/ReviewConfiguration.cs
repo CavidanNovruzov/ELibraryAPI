@@ -23,7 +23,7 @@ public sealed class ReviewConfiguration : BaseEntityConfiguration<Review>
             .IsRequired()
             .HasMaxLength(2000);
 
-        builder.Property(x => x.Raiting)
+        builder.Property(x => x.Rating)
             .IsRequired();
 
         builder.HasIndex(x => new { x.ProductId, x.UserId })

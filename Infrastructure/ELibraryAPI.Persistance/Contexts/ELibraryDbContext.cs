@@ -64,21 +64,35 @@ public class ELibraryDbContext : IdentityDbContext<AppUser, AppRole, Guid>
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 
-    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken=default)
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        var datas = ChangeTracker.Entries<BaseEntity>();
+        var entries = ChangeTracker.Entries<BaseEntity>();
+        var now = DateTime.UtcNow;
 
-        foreach (var data in datas)
+        foreach (var entry in entries)
         {
-            _ = data.State switch
+            switch (entry.State)
             {
-                EntityState.Added => data.Entity.CreatedDate = DateTime.UtcNow,
-                EntityState.Modified => data.Entity.UpdatedDate = DateTime.UtcNow,
-                _=>DateTime.UtcNow,
-            };
+                case EntityState.Added:
+                    entry.Entity.CreatedDate = now;
+                    entry.Entity.UpdatedDate = now;
+                    entry.Entity.IsDeleted = false;
+                    break;
+
+                case EntityState.Modified:
+                    entry.Entity.UpdatedDate = now;
+                    break;
+
+                case EntityState.Deleted:
+                    // Bazadan tamamilə silinməsin, sadəcə işarələnsin
+                    entry.State = EntityState.Modified;
+                    entry.Entity.IsDeleted = true;
+                    break;
+            }
         }
 
-        return base.SaveChangesAsync(cancellationToken);    
+        return base.SaveChangesAsync(cancellationToken);
     }
-
 }
+
+

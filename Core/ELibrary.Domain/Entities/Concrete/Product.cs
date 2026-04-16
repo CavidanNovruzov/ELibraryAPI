@@ -11,7 +11,8 @@ public class Product : BaseEntity
     public int PageCount { get; set; }
     public decimal SalePrice { get; set; }
     public decimal? DiscountPrice { get; set; }
-
+    public int PublicationYear { get; set; }
+    public int StockCount { get; set; }
     public Guid PublisherId { get; set; }
     public Publisher Publisher { get; set; } = null!;
 

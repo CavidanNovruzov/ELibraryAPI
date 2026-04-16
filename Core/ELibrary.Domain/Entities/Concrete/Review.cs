@@ -10,5 +10,6 @@ public class Review : BaseEntity
     public Guid UserId { get; set; }
     public AppUser User { get; set; }
     public string Comment { get; set; }
-    public int Raiting { get; set; } // 1-5
+    public int Rating { get; set; } 
+    public bool IsApproved { get; set; } = false;
 }

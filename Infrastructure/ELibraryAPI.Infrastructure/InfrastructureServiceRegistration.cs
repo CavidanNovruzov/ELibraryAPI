@@ -1,5 +1,6 @@
 ﻿using ELibraryAPI.Application.Abstractions.Services;
 using ELibraryAPI.Application.Abstractions.Services.Auth;
+using ELibraryAPI.Application.Options;
 using ELibraryAPI.Infrastructure.Options;
 using ELibraryAPI.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;

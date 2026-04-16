@@ -17,11 +17,7 @@ public sealed class UserPermissionConfiguration : IEntityTypeConfiguration<AppUs
         builder.Property(x => x.PermissionId)
             .IsRequired();
 
-        builder.Property(x => x.GrantedByUserId)
-            .IsRequired(false);
-
         builder.HasIndex(x => x.PermissionId);
-        builder.HasIndex(x => x.GrantedByUserId);
 
         builder.HasOne(x => x.User)
             .WithMany(x => x.UserPermissions)
@@ -33,14 +29,5 @@ public sealed class UserPermissionConfiguration : IEntityTypeConfiguration<AppUs
             .HasForeignKey(x => x.PermissionId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        //builder.HasOne(x => x.GrantedByUser)
-        //    .WithMany(x => x.GrantedPermissions)
-        //    .HasForeignKey(x => x.GrantedByUserId)
-        //    .OnDelete(DeleteBehavior.SetNull);
-
-        builder.HasOne(x => x.GrantedByUser)
-            .WithMany(x => x.GrantedPermissions)
-            .HasForeignKey(x => x.GrantedByUserId)
-            .OnDelete(DeleteBehavior.NoAction);
     }
 }

@@ -9,6 +9,5 @@ public class AppUserPermission : BaseEntity
 
     public int PermissionId { get; set; }
     public Permission Permission { get; set; } = null!;
-
-    public Guid? GrantedByUserId { get; set; } // Audit üçün vacibdir
+   
 }

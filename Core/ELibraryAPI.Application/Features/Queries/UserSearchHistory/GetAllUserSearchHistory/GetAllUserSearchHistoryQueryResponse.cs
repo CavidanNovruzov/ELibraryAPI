@@ -1,0 +1,3 @@
+namespace ELibraryAPI.Application.Features.Queries.UserSearchHistory.GetAllUserSearchHistory;
+
+public sealed record GetAllUserSearchHistoryQueryResponse;

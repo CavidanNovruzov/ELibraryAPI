@@ -1,0 +1,3 @@
+namespace ELibraryAPI.Application.Features.Queries.RolePermission.GetAllRolePermission;
+
+public sealed record GetAllRolePermissionQueryResponse;

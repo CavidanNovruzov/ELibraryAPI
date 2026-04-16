@@ -1,0 +1,3 @@
+namespace ELibraryAPI.Application.Features.Queries.BranchWorkHours.GetAllBranchWorkHours;
+
+public sealed record GetAllBranchWorkHoursQueryResponse;

@@ -1,0 +1,3 @@
+namespace ELibraryAPI.Application.Features.Queries.InventoryMovement.GetByIdInventoryMovement;
+
+public sealed record GetByIdInventoryMovementQueryResponse;

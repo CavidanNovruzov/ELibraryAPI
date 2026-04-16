@@ -1,0 +1,3 @@
+namespace ELibraryAPI.Application.Features.Queries.WishlistItem.GetAllWishlistItem;
+
+public sealed record GetAllWishlistItemQueryResponse;

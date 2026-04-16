@@ -1,0 +1,3 @@
+namespace ELibraryAPI.Application.Features.Queries.PaymentMethod.GetByIdPaymentMethod;
+
+public sealed record GetByIdPaymentMethodQueryResponse;

@@ -1,0 +1,3 @@
+namespace ELibraryAPI.Application.Features.Queries.RefreshToken.GetAllRefreshToken;
+
+public sealed record GetAllRefreshTokenQueryResponse;

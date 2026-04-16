@@ -1,0 +1,3 @@
+namespace ELibraryAPI.Application.Features.Queries.ShippingMethod.GetByIdShippingMethod;
+
+public sealed record GetByIdShippingMethodQueryResponse;

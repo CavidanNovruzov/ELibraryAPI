@@ -1,0 +1,3 @@
+namespace ELibraryAPI.Application.Features.Queries.ProductGenre.GetByIdProductGenre;
+
+public sealed record GetByIdProductGenreQueryResponse;

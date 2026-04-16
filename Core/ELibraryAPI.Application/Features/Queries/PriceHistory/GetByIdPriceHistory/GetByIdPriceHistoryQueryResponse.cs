@@ -1,0 +1,3 @@
+namespace ELibraryAPI.Application.Features.Queries.PriceHistory.GetByIdPriceHistory;
+
+public sealed record GetByIdPriceHistoryQueryResponse;

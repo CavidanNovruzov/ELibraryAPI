@@ -1,0 +1,3 @@
+namespace ELibraryAPI.Application.Features.Queries.AppUserPermission.GetByIdAppUserPermission;
+
+public sealed record GetByIdAppUserPermissionQueryResponse;

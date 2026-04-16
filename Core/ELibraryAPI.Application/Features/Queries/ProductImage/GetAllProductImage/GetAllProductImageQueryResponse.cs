@@ -1,0 +1,3 @@
+namespace ELibraryAPI.Application.Features.Queries.ProductImage.GetAllProductImage;
+
+public sealed record GetAllProductImageQueryResponse;

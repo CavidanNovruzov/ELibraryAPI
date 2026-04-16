@@ -1,0 +1,3 @@
+namespace ELibraryAPI.Application.Features.Queries.ProductAuthor.GetAllProductAuthor;
+
+public sealed record GetAllProductAuthorQueryResponse;

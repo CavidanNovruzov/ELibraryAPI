@@ -1,0 +1,3 @@
+namespace ELibraryAPI.Application.Features.Queries.ShippingMethod.GetAllShippingMethod;
+
+public sealed record GetAllShippingMethodQueryResponse;

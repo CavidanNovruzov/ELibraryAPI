@@ -3,4 +3,5 @@ using ELibraryAPI.Domain.Entities.Concrete;
 using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
-public class BannerReadRepository(ELibraryDbContext context) : ReadRepository<Banner>(context), IBannerReadRepository { }
+public class BannerReadRepository(ELibraryDbContext context) : ReadRepository<Banner, Guid>(context), IBannerReadRepository { }
+    

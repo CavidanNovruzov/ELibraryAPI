@@ -4,10 +4,8 @@ namespace ELibraryAPI.Application.Abstractions.Services;
 
 public interface IEmailSender
 {
-    public interface IEmailSender
-    {
-        /// <summary>
-        /// E-poçt göndərmək üçün əsas metod.
+    /// <summary>
+    /// E-poçt göndərmək üçün əsas metod.
         /// </summary>
         /// <param name="to">Alıcının e-poçt ünvanı</param>
         /// <param name="subject">E-poçtun mövzusu</param>
@@ -20,5 +18,5 @@ public interface IEmailSender
             string htmlBody,
             string? plainBody = null,
             CancellationToken ct = default);
-    }
+    
 }

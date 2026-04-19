@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class BasketItemReadRepository(ELibraryDbContext context) : ReadRepository<BasketItem>(context), IBasketItemReadRepository { }
+public class BasketItemReadRepository(ELibraryDbContext context) : ReadRepository<BasketItem, Guid>(context), IBasketItemReadRepository { }

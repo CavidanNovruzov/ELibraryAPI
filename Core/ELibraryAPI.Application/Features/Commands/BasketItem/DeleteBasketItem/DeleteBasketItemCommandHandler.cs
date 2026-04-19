@@ -1,10 +1,35 @@
 using ELibraryAPI.Application.Responses;
+using ELibraryAPI.Application.UnitOfWork;
 using MediatR;
 
 namespace ELibraryAPI.Application.Features.Commands.BasketItem.DeleteBasketItem;
 
 public sealed class DeleteBasketItemCommandHandler : IRequestHandler<DeleteBasketItemCommandRequest, Result>
 {
-    public Task<Result> Handle(DeleteBasketItemCommandRequest request, CancellationToken cancellationToken)
-        => throw new NotImplementedException();
+    private readonly IUnitOfWork _unitOfWork;
+
+    public DeleteBasketItemCommandHandler(IUnitOfWork unitOfWork)
+    {
+        _unitOfWork = unitOfWork;
+    }
+
+    public async Task<Result> Handle(DeleteBasketItemCommandRequest request, CancellationToken ct)
+    {
+        var readRepo = _unitOfWork.ReadRepository<Domain.Entities.Concrete.BasketItem, Guid>();
+        var writeRepo = _unitOfWork.WriteRepository<Domain.Entities.Concrete.BasketItem, Guid>();
+
+        var basketItem = await readRepo.GetByIdAsync(request.Id, tracking: true, ct: ct);
+
+        if (basketItem == null)
+        {
+            return Result.Failure("Basket item not found.");
+        }
+
+        basketItem.IsDeleted = true;
+        writeRepo.Update(basketItem);
+
+        await _unitOfWork.SaveAsync(ct);
+
+        return Result.Success("Item removed from basket.");
+    }
 }

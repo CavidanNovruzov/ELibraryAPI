@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class ProductAuthorReadRepository(ELibraryDbContext context) : ReadRepository<ProductAuthor>(context), IProductAuthorReadRepository { }
+public class ProductAuthorReadRepository(ELibraryDbContext context) : ReadRepository<ProductAuthor, Guid>(context), IProductAuthorReadRepository { }

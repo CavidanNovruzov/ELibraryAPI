@@ -1,12 +1,6 @@
 ﻿using ELibraryAPI.Domain.Entities.Concrete.Auth;
-using ELibraryAPI.Persistence.Configurations;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ELibraryAPI.Persistance.Configurations.Auth;
 
@@ -30,7 +24,10 @@ public class RefreshTokenConfiguration : IEntityTypeConfiguration<RefreshToken>
                .HasMaxLength(50);
 
         builder.HasOne(rt => rt.User)
-               .WithMany(u => u.RefreshTokens)
-               .HasForeignKey(rt => rt.UserId);
+                  .WithMany(u => u.RefreshTokens)
+                  .HasForeignKey(rt => rt.UserId)
+                  .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Property(rt => rt.TokenHash).HasMaxLength(512).IsRequired();
     }
 }

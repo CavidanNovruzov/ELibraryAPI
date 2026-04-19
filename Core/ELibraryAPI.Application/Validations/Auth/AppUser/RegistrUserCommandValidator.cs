@@ -18,7 +18,8 @@ public sealed class RegistrUserCommandValidator : AbstractValidator<RegistrUserC
         RuleFor(x => x.UserName)
             .NotEmpty()
             .MinimumLength(3)
-            .MaximumLength(50);
+            .MaximumLength(50)
+            .Matches("^[a-zA-Z0-9._-]+$");
 
         RuleFor(x => x.Email)
             .NotEmpty()

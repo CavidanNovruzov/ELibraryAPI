@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class ProductWriteRepository(ELibraryDbContext context) : WriteRepository<Product>(context), IProductWriteRepository { }
+public class ProductWriteRepository(ELibraryDbContext context) : WriteRepository<Product, Guid>(context), IProductWriteRepository { }

@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class InventoryMovementReadRepository(ELibraryDbContext context) : ReadRepository<InventoryMovement>(context), IInventoryMovementReadRepository { }
+public class InventoryMovementReadRepository(ELibraryDbContext context) : ReadRepository<InventoryMovement, Guid>(context), IInventoryMovementReadRepository { }

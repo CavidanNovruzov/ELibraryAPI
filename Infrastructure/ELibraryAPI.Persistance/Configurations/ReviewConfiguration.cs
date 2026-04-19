@@ -12,7 +12,7 @@ public sealed class ReviewConfiguration : BaseEntityConfiguration<Review>
 
         builder.ToTable(_ =>
         {
-            _.HasCheckConstraint("CK_Reviews_Rating_Range", "[Raiting] >= 1 AND [Raiting] <= 5");
+            _.HasCheckConstraint("CK_Reviews_Rating_Range", "[Rating] >= 1 AND [Rating] <= 5");
         });
 
         builder.Property(x => x.ProductId).IsRequired();

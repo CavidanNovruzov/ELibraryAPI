@@ -9,8 +9,8 @@ public class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
 
         // RefreshToken əlaqəsi (Sənin layihəndəki kritik hissə)
         builder.HasMany(u => u.RefreshTokens)
-               .WithOne(t => t.AppUser)
-               .HasForeignKey(t => t.AppUserId)
+               .WithOne(t => t.User)
+               .HasForeignKey(t => t.UserId)
                .OnDelete(DeleteBehavior.Cascade);
 
         // Libraff üçün əlavə sahələr (FullName və s.)

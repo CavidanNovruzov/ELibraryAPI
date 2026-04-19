@@ -4,35 +4,49 @@ namespace ELibraryAPI.Application.Responses;
 
 public class Result
 {
-    // 'init' sayəsində obyekt yaradıldıqdan sonra dəyəri dəyişdirilə bilməz
     public bool IsSuccess { get; init; }
-    public string? Error { get; init; }
+    public string? Message { get; init; }
+    public List<string>? Errors { get; init; } // Behavior-lardan gələn çoxlu xətalar üçün
 
-    // Konstruktor protected-dir, yəni kənarda 'new Result()' yazıla bilməz
-    protected Result(bool success, string? error)
+    protected Result(bool success, string? message, List<string>? errors = null)
     {
         IsSuccess = success;
-        Error = error;
+        Message = message;
+        Errors = errors;
     }
 
+    // Parametrsiz uğur (Sadəcə IsSuccess = true)
     public static Result Success() => new(true, null);
 
-    public static Result Failure(string error) => new(false, error);
-}
+    // Mesajlı uğur (Artıq "Publisher deleted" yaza bilərsən)
+    public static Result Success(string message) => new(true, message);
 
+    // Tək mesajlı xəta
+    public static Result Failure(string message) => new(false, message);
+
+    // Çoxlu xətalar (Məsələn, Validation Behavior üçün)
+    public static Result Failure(List<string> errors, string message = "Validation failed")
+        => new(false, message, errors);
+}
 public class Result<T> : Result
 {
-    public T? Value { get; init; }
+    public T? Data { get; init; }
 
-    // Konstruktor private-dir, yalnız statik metodlar tərəfindən istifadə olunur
-    private Result(T? value, bool success, string? error) : base(success, error)
+    private Result(T? data, bool success, string? message, List<string>? errors = null)
+        : base(success, message, errors)
     {
-        Value = value;
+        Data = data;
     }
 
-    // Uğurlu halda Value mütləq olmalıdır
-    public static Result<T> Success(T value) => new(value, true, null);
+    // Uğurlu halda data mütləqdir
+    public static Result<T> Success(T data) => new(data, true, null);
 
-    // Xəta halında Value default (null) olur
-    public static new Result<T> Failure(string error) => new(default, false, error);
+    // Uğurlu halda həm data, həm mesaj
+    public static Result<T> Success(T data, string message) => new(data, true, message);
+
+    // Xəta halı (Inherit vasitəsilə base xətaları istifadə edir)
+    public static new Result<T> Failure(string message) => new(default, false, message);
+
+    public static new Result<T> Failure(List<string> errors, string message = "Error occurred")
+        => new(default, false, message, errors);
 }

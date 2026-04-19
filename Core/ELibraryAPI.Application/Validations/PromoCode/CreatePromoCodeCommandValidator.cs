@@ -7,9 +7,9 @@ public sealed class CreatePromoCodeCommandValidator : AbstractValidator<CreatePr
 {
     public CreatePromoCodeCommandValidator()
     {
-        RuleFor(x => x.Code).NotEmpty().MaximumLength(50);
+        RuleFor(x => x.Code).NotEmpty().MaximumLength(50).Matches("^[A-Z0-9]+$");
         RuleFor(x => x.DiscountPercent).InclusiveBetween(0,100);
-        RuleFor(x => x.EndDate).NotEmpty().GreaterThan(x => x.StartDate);
+        RuleFor(x => x.EndDate).NotEmpty().GreaterThanOrEqualTo(DateTime.UtcNow.Date);
         RuleFor(x => x.StartDate).NotEmpty();
         RuleFor(x => x.UsageLimit).GreaterThanOrEqualTo(0);
     }

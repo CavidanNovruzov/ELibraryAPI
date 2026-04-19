@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class StockReadRepository(ELibraryDbContext context) : ReadRepository<Stock>(context), IStockReadRepository { }
+public class StockReadRepository(ELibraryDbContext context) : ReadRepository<Stock, Guid>(context), IStockReadRepository { }

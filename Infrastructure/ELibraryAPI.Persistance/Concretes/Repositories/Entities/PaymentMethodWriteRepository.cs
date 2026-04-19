@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class PaymentMethodWriteRepository(ELibraryDbContext context) : WriteRepository<PaymentMethod>(context), IPaymentMethodWriteRepository { }
+public class PaymentMethodWriteRepository(ELibraryDbContext context) : WriteRepository<PaymentMethod, Guid>(context), IPaymentMethodWriteRepository { }

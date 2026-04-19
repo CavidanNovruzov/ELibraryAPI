@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class SubCategoryReadRepository(ELibraryDbContext context) : ReadRepository<SubCategory>(context), ISubCategoryReadRepository { }
+public class SubCategoryReadRepository(ELibraryDbContext context) : ReadRepository<SubCategory, Guid>(context), ISubCategoryReadRepository { }

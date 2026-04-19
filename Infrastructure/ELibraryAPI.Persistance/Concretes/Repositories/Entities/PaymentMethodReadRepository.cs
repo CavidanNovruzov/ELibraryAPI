@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class PaymentMethodReadRepository(ELibraryDbContext context) : ReadRepository<PaymentMethod>(context), IPaymentMethodReadRepository { }
+public class PaymentMethodReadRepository(ELibraryDbContext context) : ReadRepository<PaymentMethod, Guid>(context), IPaymentMethodReadRepository { }

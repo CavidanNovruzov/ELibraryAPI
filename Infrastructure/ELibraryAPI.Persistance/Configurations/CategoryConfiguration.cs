@@ -10,6 +10,8 @@ public sealed class CategoryConfiguration : BaseEntityConfiguration<Category>
     {
         base.Configure(builder);
 
+        builder.HasIndex(c => c.Name);
+
         builder.Property(x => x.Name)
             .IsRequired()
             .HasMaxLength(200);

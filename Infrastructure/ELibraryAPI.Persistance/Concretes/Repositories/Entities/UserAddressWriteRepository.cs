@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class UserAddressWriteRepository(ELibraryDbContext context) : WriteRepository<UserAddress>(context), IUserAddressWriteRepository { }
+public class UserAddressWriteRepository(ELibraryDbContext context) : WriteRepository<UserAddress, Guid>(context), IUserAddressWriteRepository { }

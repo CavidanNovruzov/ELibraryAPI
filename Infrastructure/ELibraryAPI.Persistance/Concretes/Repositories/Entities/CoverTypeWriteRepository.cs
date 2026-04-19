@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class CoverTypeWriteRepository(ELibraryDbContext context) : WriteRepository<CoverType>(context), ICoverTypeWriteRepository { }
+public class CoverTypeWriteRepository(ELibraryDbContext context) : WriteRepository<CoverType, Guid>(context), ICoverTypeWriteRepository { }

@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class BranchReadRepository(ELibraryDbContext context) : ReadRepository<Branch>(context), IBranchReadRepository { }
+public class BranchReadRepository(ELibraryDbContext context) : ReadRepository<Branch, Guid>(context), IBranchReadRepository { }

@@ -5,13 +5,10 @@ using System.Security.Principal;
 
 namespace ELibraryAPI.Domain.Entities.Concrete.Auth;
 
-public class AppUser : IdentityUser<Guid>,IEntity
+public class AppUser : IdentityUser<Guid>,IEntity<Guid>
 {
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;
-
-    public string RefreshToken { get; set; }
-    public DateTime RefreshTokenEndDate { get; set; }
 
     public Basket? Basket { get; set; }
     public Wishlist? Wishlist { get; set; }

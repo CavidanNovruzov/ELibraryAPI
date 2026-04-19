@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class LanguageWriteRepository(ELibraryDbContext context) : WriteRepository<Language>(context), ILanguageWriteRepository { }
+public class LanguageWriteRepository(ELibraryDbContext context) : WriteRepository<Language, Guid>(context), ILanguageWriteRepository { }

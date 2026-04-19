@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class UserAddressReadRepository(ELibraryDbContext context) : ReadRepository<UserAddress>(context), IUserAddressReadRepository { }
+public class UserAddressReadRepository(ELibraryDbContext context) : ReadRepository<UserAddress, Guid>(context), IUserAddressReadRepository { }

@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class BranchWorkHoursWriteRepository(ELibraryDbContext context) : WriteRepository<BranchWorkHours>(context), IBranchWorkHoursWriteRepository { }
+public class BranchWorkHoursWriteRepository(ELibraryDbContext context) : WriteRepository<BranchWorkHours, Guid>(context), IBranchWorkHoursWriteRepository { }

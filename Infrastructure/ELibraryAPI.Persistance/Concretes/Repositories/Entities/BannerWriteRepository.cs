@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class BannerWriteRepository(ELibraryDbContext context) : WriteRepository<Banner>(context), IBannerWriteRepository { }
+public class BannerWriteRepository(ELibraryDbContext context) : WriteRepository<Banner, Guid>(context), IBannerWriteRepository { }

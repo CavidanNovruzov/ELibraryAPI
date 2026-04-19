@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class ProductImageReadRepository(ELibraryDbContext context) : ReadRepository<ProductImage>(context), IProductImageReadRepository { }
+public class ProductImageReadRepository(ELibraryDbContext context) : ReadRepository<ProductImage, Guid>(context), IProductImageReadRepository { }

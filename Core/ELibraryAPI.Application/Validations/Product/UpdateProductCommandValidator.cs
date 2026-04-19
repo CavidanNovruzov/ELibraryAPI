@@ -19,5 +19,8 @@ public sealed class UpdateProductCommandValidator : AbstractValidator<UpdateProd
         RuleFor(x => x.SalePrice).GreaterThanOrEqualTo(0);
         RuleFor(x => x.SubCategoryId).NotEmpty();
         RuleFor(x => x.Title).NotEmpty().MaximumLength(250);
+        RuleFor(x => x.PublicationYear)
+        .GreaterThan(1000)
+        .LessThanOrEqualTo(DateTime.UtcNow.Year);
     }
 }

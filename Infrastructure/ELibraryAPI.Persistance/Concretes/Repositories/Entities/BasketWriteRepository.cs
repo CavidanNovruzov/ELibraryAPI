@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class BasketWriteRepository(ELibraryDbContext context) : WriteRepository<Basket>(context), IBasketWriteRepository { }
+public class BasketWriteRepository(ELibraryDbContext context) : WriteRepository<Basket, Guid>(context), IBasketWriteRepository { }

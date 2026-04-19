@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class UserSearchHistoryReadRepository(ELibraryDbContext context) : ReadRepository<UserSearchHistory>(context), IUserSearchHistoryReadRepository { }
+public class UserSearchHistoryReadRepository(ELibraryDbContext context) : ReadRepository<UserSearchHistory, Guid>(context), IUserSearchHistoryReadRepository { }

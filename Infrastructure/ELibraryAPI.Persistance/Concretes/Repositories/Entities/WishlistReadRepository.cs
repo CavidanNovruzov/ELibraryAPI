@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class WishlistReadRepository(ELibraryDbContext context) : ReadRepository<Wishlist>(context), IWishlistReadRepository { }
+public class WishlistReadRepository(ELibraryDbContext context) : ReadRepository<Wishlist, Guid>(context), IWishlistReadRepository { }

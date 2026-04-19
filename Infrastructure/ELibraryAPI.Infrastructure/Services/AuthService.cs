@@ -1,4 +1,5 @@
-﻿using ELibraryAPI.Application.Abstractions.Services.Auth;
+﻿using ELibraryAPI.Application.Abstractions.Services;
+using ELibraryAPI.Application.Abstractions.Services.Auth;
 using ELibraryAPI.Application.Dtos.Auth;
 using ELibraryAPI.Application.Options;
 using ELibraryAPI.Application.Responses;
@@ -7,7 +8,6 @@ using ELibraryAPI.Infrastructure.Options;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System.Net;
-using static ELibraryAPI.Application.Abstractions.Services.IEmailSender;
 
 namespace ELibraryAPI.Infrastructure.Services;
 

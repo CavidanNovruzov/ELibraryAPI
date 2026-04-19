@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class SubCategoryWriteRepository(ELibraryDbContext context) : WriteRepository<SubCategory>(context), ISubCategoryWriteRepository { }
+public class SubCategoryWriteRepository(ELibraryDbContext context) : WriteRepository<SubCategory, Guid>(context), ISubCategoryWriteRepository { }

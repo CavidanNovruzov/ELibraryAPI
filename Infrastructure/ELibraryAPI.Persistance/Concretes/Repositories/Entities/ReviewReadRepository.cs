@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class ReviewReadRepository(ELibraryDbContext context) : ReadRepository<Review>(context), IReviewReadRepository { }
+public class ReviewReadRepository(ELibraryDbContext context) : ReadRepository<Review, Guid>(context), IReviewReadRepository { }

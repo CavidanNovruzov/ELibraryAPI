@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class CoverTypeReadRepository(ELibraryDbContext context) : ReadRepository<CoverType>(context), ICoverTypeReadRepository { }
+public class CoverTypeReadRepository(ELibraryDbContext context) : ReadRepository<CoverType, Guid>(context), ICoverTypeReadRepository { }

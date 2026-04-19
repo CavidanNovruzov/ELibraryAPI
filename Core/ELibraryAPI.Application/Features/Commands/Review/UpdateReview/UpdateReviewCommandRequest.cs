@@ -7,6 +7,6 @@ public sealed record UpdateReviewCommandRequest(
     Guid Id,
     string Comment,
     Guid ProductId,
-    int Raiting,
+    int Rating,
     Guid UserId
 ) : IRequest<Result<UpdateReviewCommandResponse>>;

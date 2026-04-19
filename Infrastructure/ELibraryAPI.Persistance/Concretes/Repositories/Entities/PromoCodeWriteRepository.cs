@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class PromoCodeWriteRepository(ELibraryDbContext context) : WriteRepository<PromoCode>(context), IPromoCodeWriteRepository { }
+public class PromoCodeWriteRepository(ELibraryDbContext context) : WriteRepository<PromoCode, Guid>(context), IPromoCodeWriteRepository { }

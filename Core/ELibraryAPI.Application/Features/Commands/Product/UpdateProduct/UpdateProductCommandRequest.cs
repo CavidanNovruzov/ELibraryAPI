@@ -14,5 +14,6 @@ public sealed record UpdateProductCommandRequest(
     Guid PublisherId,
     decimal SalePrice,
     Guid SubCategoryId,
-    string Title
+    string Title,
+    int PublicationYear
 ) : IRequest<Result<UpdateProductCommandResponse>>;

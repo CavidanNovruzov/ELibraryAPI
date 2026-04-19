@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class OrderStatusReadRepository(ELibraryDbContext context) : ReadRepository<OrderStatus>(context), IOrderStatusReadRepository { }
+public class OrderStatusReadRepository(ELibraryDbContext context) : ReadRepository<OrderStatus, Guid>(context), IOrderStatusReadRepository { }

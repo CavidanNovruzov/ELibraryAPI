@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class GenreReadRepository(ELibraryDbContext context) : ReadRepository<Genre>(context), IGenreReadRepository { }
+public class GenreReadRepository(ELibraryDbContext context) : ReadRepository<Genre, Guid>(context), IGenreReadRepository { }

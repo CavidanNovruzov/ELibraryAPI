@@ -6,6 +6,6 @@ namespace ELibraryAPI.Application.Features.Commands.Review.CreateReview;
 public sealed record CreateReviewCommandRequest(
     string Comment,
     Guid ProductId,
-    int Raiting,
+    int Rating,
     Guid UserId
 ) : IRequest<Result<CreateReviewCommandResponse>>;

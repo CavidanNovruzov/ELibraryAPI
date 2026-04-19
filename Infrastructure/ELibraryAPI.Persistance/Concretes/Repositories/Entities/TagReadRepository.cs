@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class TagReadRepository(ELibraryDbContext context) : ReadRepository<Tag>(context), ITagReadRepository { }
+public class TagReadRepository(ELibraryDbContext context) : ReadRepository<Tag, Guid>(context), ITagReadRepository { }

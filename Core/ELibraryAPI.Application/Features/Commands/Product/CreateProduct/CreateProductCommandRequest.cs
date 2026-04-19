@@ -13,5 +13,6 @@ public sealed record CreateProductCommandRequest(
     Guid PublisherId,
     decimal SalePrice,
     Guid SubCategoryId,
-    string Title
+    string Title,
+    int PublicationYear
 ) : IRequest<Result<CreateProductCommandResponse>>;

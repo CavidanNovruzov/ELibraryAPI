@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class InventoryMovementWriteRepository(ELibraryDbContext context) : WriteRepository<InventoryMovement>(context), IInventoryMovementWriteRepository { }
+public class InventoryMovementWriteRepository(ELibraryDbContext context) : WriteRepository<InventoryMovement, Guid>(context), IInventoryMovementWriteRepository { }

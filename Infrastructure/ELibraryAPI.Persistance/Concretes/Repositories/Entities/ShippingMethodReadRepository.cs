@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class ShippingMethodReadRepository(ELibraryDbContext context) : ReadRepository<ShippingMethod>(context), IShippingMethodReadRepository { }
+public class ShippingMethodReadRepository(ELibraryDbContext context) : ReadRepository<ShippingMethod, Guid>(context), IShippingMethodReadRepository { }

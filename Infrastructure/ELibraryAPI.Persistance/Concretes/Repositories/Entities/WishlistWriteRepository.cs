@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class WishlistWriteRepository(ELibraryDbContext context) : WriteRepository<Wishlist>(context), IWishlistWriteRepository { }
+public class WishlistWriteRepository(ELibraryDbContext context) : WriteRepository<Wishlist, Guid>(context), IWishlistWriteRepository { }

@@ -6,8 +6,6 @@ namespace ELibraryAPI.Domain.Entities.Concrete.Auth;
 public class RefreshToken : BaseEntity
 {
     public string Token { get; set; }
-    public Guid AppUserId { get; set; }
-    public AppUser AppUser { get; set; } = null!;
     public Guid UserId { get; set; }
     public AppUser User { get; set; }
     public string TokenHash { get; set; }

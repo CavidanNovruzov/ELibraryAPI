@@ -22,10 +22,15 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommandReq
         }, ct);
 
         if (!result.IsSuccess)
-            return Result<RefreshTokenCommandResponse>.Failure(result.Error!);
+        {
+            if (result.Errors != null && result.Errors.Any())
+            {
+                return Result<RefreshTokenCommandResponse>.Failure(result.Errors, result.Message ?? "Validation failed");
+            }
 
-        return Result<RefreshTokenCommandResponse>.Success(new(
-            result.Value!
-        ));
+            return Result<RefreshTokenCommandResponse>.Failure(result.Message ?? "Token refresh failed");
+        }
+
+        return Result<RefreshTokenCommandResponse>.Success(new(result.Data));
     }
 }

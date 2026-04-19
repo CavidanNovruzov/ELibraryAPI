@@ -5,6 +5,7 @@ using global::ELibraryAPI.Domain.Entities.Concrete.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Reflection.Emit;
 
@@ -62,32 +63,45 @@ public class ELibraryDbContext : IdentityDbContext<AppUser, AppRole, Guid>
 
         //builder.ApplyConfigurationsFromAssembly(typeof(ELibraryDbContext).Assembly);
         builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        // --- Global Query Filter Əlavəsi ---
+        foreach (var entityType in builder.Model.GetEntityTypes())
+        {
+            var isDeletedProperty = entityType.FindProperty("IsDeleted");
+
+            if (isDeletedProperty != null && isDeletedProperty.ClrType == typeof(bool))
+            {
+                var parameter = Expression.Parameter(entityType.ClrType, "e");
+                var filter = Expression.Lambda(
+                    Expression.Equal(
+                    Expression.Property(parameter, isDeletedProperty.PropertyInfo!),
+                    Expression.Constant(false)
+                    ), parameter);
+
+                // Filteri tətbiq edirik
+                builder.Entity(entityType.ClrType).HasQueryFilter(filter);
+            }
+        }
     }
 
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        var entries = ChangeTracker.Entries<BaseEntity>();
+        var entries = ChangeTracker.Entries<BaseEntity>()
+            .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified);
+
         var now = DateTime.UtcNow;
 
         foreach (var entry in entries)
         {
-            switch (entry.State)
+            if (entry.State == EntityState.Added)
             {
-                case EntityState.Added:
-                    entry.Entity.CreatedDate = now;
-                    entry.Entity.UpdatedDate = now;
-                    entry.Entity.IsDeleted = false;
-                    break;
-
-                case EntityState.Modified:
-                    entry.Entity.UpdatedDate = now;
-                    break;
-
-                case EntityState.Deleted:
-                    // Bazadan tamamilə silinməsin, sadəcə işarələnsin
-                    entry.State = EntityState.Modified;
-                    entry.Entity.IsDeleted = true;
-                    break;
+                entry.Entity.CreatedDate = now;
+                entry.Entity.UpdatedDate = now;
+            }
+            // Mövcud data üzərində dəyişiklik (o cümlədən soft delete) olanda yalnız bu işləyir
+            else if (entry.State == EntityState.Modified)
+            {
+                entry.Entity.UpdatedDate = now;
             }
         }
 

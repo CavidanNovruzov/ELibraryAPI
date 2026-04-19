@@ -9,7 +9,7 @@ public sealed class CreateReviewCommandValidator : AbstractValidator<CreateRevie
     {
         RuleFor(x => x.Comment).NotEmpty().MaximumLength(2000);
         RuleFor(x => x.ProductId).NotEmpty();
-        RuleFor(x => x.Raiting).InclusiveBetween(1,5);
+        RuleFor(x => x.Rating).InclusiveBetween(1,5);
         RuleFor(x => x.UserId).NotEmpty();
     }
 }

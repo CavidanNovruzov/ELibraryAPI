@@ -8,12 +8,9 @@ using System.Reflection;
 using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
-//builder.Services.AddControllers(options=>options.Filters.Add<>())
-//    .AddFluentValidion(Configuration=>Configuration.RegistrValidatorsFromAssemblyContaining<>())
-//    .ConfigureApiBehaviorOptions(options=>options.SuppressModelStateInvalidFilter = true);
-//builder.Services.AddHttpContextAccessor();
+builder.Services.AddControllers()
+    .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true);
 
-// Validator-ların hansı layihədə (Assembly) olduğunu göstəririk
 builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
 // Program.cs
@@ -24,6 +21,8 @@ builder.Services.AddCors(options=>options.AddDefaultPolicy(policy=>policy.WithOr
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAuthorization();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>

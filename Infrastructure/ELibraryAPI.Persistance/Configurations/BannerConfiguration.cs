@@ -12,9 +12,9 @@ public sealed class BannerConfiguration : BaseEntityConfiguration<Banner>
 
         builder.Property(x => x.ImageUrl)
             .IsRequired()
-            .HasMaxLength(1000);
+            .HasMaxLength(500);
 
         builder.Property(x => x.RedirectUrl)
-            .HasMaxLength(1000);
+            .HasMaxLength(500);
     }
 }

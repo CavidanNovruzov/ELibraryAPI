@@ -4,4 +4,4 @@ using ELibraryAPI.Persistence.Contexts;
 
 namespace ELibraryAPI.Persistance.Concrete.Repositories.Entities;
 
-public class OrderItemWriteRepository(ELibraryDbContext context) : WriteRepository<OrderItem>(context), IOrderItemWriteRepository { }
+public class OrderItemWriteRepository(ELibraryDbContext context) : WriteRepository<OrderItem, Guid>(context), IOrderItemWriteRepository { }

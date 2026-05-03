@@ -1,0 +1,13 @@
+﻿using ELibraryAPI.Domain.Entities.Common;
+
+namespace ELibraryAPI.Domain.Entities.Concrete;
+
+public class ProductCampaign : BaseEntity, ISoftDelete
+{
+    public Guid ProductId { get; set; }
+    public virtual Product Product { get; set; } = null!;
+
+    public Guid CampaignId { get; set; }
+    public virtual Campaign Campaign { get; set; } = null!;
+    public bool IsDeleted { get; set; } = false;
+}

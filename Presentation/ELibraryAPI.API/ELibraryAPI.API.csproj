@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\OrderItemsController.cs" />
+    <Compile Remove="Controllers\OrdersController.cs" />
+    <Compile Remove="Controllers\OrderStatusesController.cs" />
+    <Compile Remove="Controllers\PaymentMethodsController.cs" />
+    <Compile Remove="Controllers\PriceHistoriesController.cs" />
+    <Compile Remove="Controllers\ProductAuthorsController.cs" />
+    <Compile Remove="Controllers\ProductGenresController.cs" />
+    <Compile Remove="Controllers\ProductImagesController.cs" />
+    <Compile Remove="Controllers\ProductsController.cs" />
+    <Compile Remove="Controllers\ProductTagsController.cs" />
+    <Compile Remove="Controllers\PromoCodesController.cs" />
+    <Compile Remove="Controllers\PublishersController.cs" />
+    <Compile Remove="Controllers\ReviewsController.cs" />
+    <Compile Remove="Controllers\ShippingMethodsController.cs" />
+    <Compile Remove="Controllers\StocksController.cs" />
+    <Compile Remove="Controllers\SubCategoriesController.cs" />
+    <Compile Remove="Controllers\TagsController.cs" />
+    <Compile Remove="Controllers\TestController.cs" />
+    <Compile Remove="Controllers\TransactionsController.cs" />
+    <Compile Remove="Controllers\UserAddressesController.cs" />
+    <Compile Remove="Controllers\UserSearchHistoriesController.cs" />
+    <Compile Remove="Controllers\WishlistItemsController.cs" />
+    <Compile Remove="Controllers\WishlistsController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.16.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+    <PackageReference Include="Serilog.Enrichers.Environment" Version="3.0.1" />
+    <PackageReference Include="Serilog.Enrichers.Thread" Version="4.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="9.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\ELibraryAPI.Application\ELibraryAPI.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\ELibraryAPI.Infrastructure\ELibraryAPI.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\ELibraryAPI.Persistance\ELibraryAPI.Persistance.csproj" />
+  </ItemGroup>
+
+</Project>
